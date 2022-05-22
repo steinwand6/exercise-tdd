@@ -18,6 +18,7 @@ fn main() {
 #[cfg(test)]
 mod money_test {
     use crate::money::dollar::Dollar;
+    use crate::money::franc::Franc;
 
     #[test]
     fn test_mutlipulication() {
