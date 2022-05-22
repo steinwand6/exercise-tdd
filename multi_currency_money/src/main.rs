@@ -8,6 +8,10 @@
 // [ ] hash_code()
 // [ ] equality comparison with NULL
 // [ ] equality comparison with Other Object
+// [x] 5CHF * 2 = 10CHF
+// [ ] overlapping dollar and franc
+// [ ] generalization of equal()
+// [ ] generalization of times()
 
 mod money;
 
