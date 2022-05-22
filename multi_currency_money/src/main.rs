@@ -1,47 +1,49 @@
 // * todo
 // [ ] $5 + 10CHF = $10 (if rate is 2:1)
 // [x] $5 * 2 = $10
-// [ ] make amount private
+// [x] make amount private
 // [x] what to do with Dollar side effect
 // [ ] how to round Money
-// [ ] equal()
+// [x] equal()
 // [ ] hash_code()
+// [ ] equality comparison with NULL
+// [ ] equality comparison with Other Object
 
 fn main() {
     println!("Hello, world!");
 }
 
-struct Dollar {
-    amount: i64,
-}
-
-impl Dollar {
-    fn new(amount: i64) -> Self {
-        Dollar { amount }
+mod Dollar {
+    #[derive(Debug, Eq, PartialEq)]
+    pub struct Dollar {
+        amount: i64,
     }
 
-    fn times(&self, multiplier: i64) -> Self {
-        Dollar {
-            amount: self.amount * multiplier,
+    impl Dollar {
+        pub fn new(amount: i64) -> Self {
+            Dollar { amount }
+        }
+
+        pub fn times(&self, multiplier: i64) -> Self {
+            Dollar {
+                amount: self.amount * multiplier,
+            }
+        }
+
+        pub fn equal(&self, obj: Dollar) -> bool {
+            self.amount == obj.amount
         }
     }
-
-    fn equal(&self, obj: Dollar) -> bool {
-        self.amount == obj.amount
-    }
 }
-
 #[cfg(test)]
 mod MoneyTest {
-    use crate::Dollar;
+    use crate::Dollar::Dollar;
 
     #[test]
     fn test_mutlipulication() {
         let five = Dollar::new(5);
-        let mut product = five.times(2);
-        assert_eq!(10, product.amount);
-        product = five.times(3);
-        assert_eq!(15, product.amount);
+        assert_eq!(five.times(2), Dollar::new(10));
+        assert_eq!(five.times(3), Dollar::new(15));
     }
 
     #[test]
