@@ -9,11 +9,13 @@ fn main() {
     println!("Hello, world!");
 }
 
-struct Dollar {}
+struct Dollar {
+    amount: i64,
+}
 
 impl Dollar {
     fn new(amount: i64) -> Self {
-        Dollar {}
+        Dollar { amount }
     }
     fn times(&self, multiplier: i64) {}
 }
