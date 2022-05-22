@@ -27,7 +27,7 @@ impl Dollar {
     }
 
     fn equal(&self, obj: Dollar) -> bool {
-        true
+        self.amount == obj.amount
     }
 }
 
