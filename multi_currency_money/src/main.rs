@@ -9,7 +9,7 @@
 // [ ] equality comparison with NULL
 // [ ] equality comparison with Other Object
 
-mod dollar;
+mod money;
 
 fn main() {
     println!("Hello, world!");
@@ -17,7 +17,7 @@ fn main() {
 
 #[cfg(test)]
 mod money_test {
-    use crate::dollar::Dollar;
+    use crate::money::dollar::Dollar;
 
     #[test]
     fn test_mutlipulication() {
