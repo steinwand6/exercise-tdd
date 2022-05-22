@@ -15,6 +15,7 @@ impl Dollar {
     fn new(amount: i64) -> Self {
         Dollar {}
     }
+    fn times(&self, multiplier: i64) {}
 }
 
 #[cfg(test)]
