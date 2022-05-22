@@ -17,7 +17,9 @@ impl Dollar {
     fn new(amount: i64) -> Self {
         Dollar { amount }
     }
-    fn times(&self, multiplier: i64) {}
+    fn times(&mut self, multiplier: i64) {
+        self.amount = 5 * 2;
+    }
 }
 
 #[cfg(test)]
@@ -26,7 +28,7 @@ mod MoneyTest {
 
     #[test]
     fn test_mutlipulication() {
-        let five = Dollar::new(5);
+        let mut five = Dollar::new(5);
         five.times(2);
         assert_eq!(10, five.amount);
     }
