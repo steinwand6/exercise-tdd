@@ -46,6 +46,7 @@ mod MoneyTest {
 
     #[test]
     fn test_equality() {
-        assert!(Dollar::new(5).equal(Dollar::new(5)))
+        assert!(Dollar::new(5).equal(Dollar::new(5)));
+        assert!(!Dollar::new(5).equal(Dollar::new(6)));
     }
 }
