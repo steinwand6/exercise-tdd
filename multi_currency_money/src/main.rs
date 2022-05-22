@@ -31,4 +31,11 @@ mod money_test {
         assert!(Dollar::new(5).equal(Dollar::new(5)));
         assert!(!Dollar::new(5).equal(Dollar::new(6)));
     }
+
+    #[test]
+    fn test_franc_mutlipulication() {
+        let five = Franc::new(5);
+        assert_eq!(five.times(2), Franc::new(10));
+        assert_eq!(five.times(3), Franc::new(15));
+    }
 }
