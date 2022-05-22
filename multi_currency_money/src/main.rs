@@ -1,9 +1,9 @@
 // * todo
-// [] $5 + 10CHF = $10 (if rate is 2:1)
-// [] $5 * 2 = $10
-// [] make amount private
-// [] what to do with Dollar side effect
-// [] how to round Money
+// [ ] $5 + 10CHF = $10 (if rate is 2:1)
+// [x] $5 * 2 = $10
+// [ ] make amount private
+// [ ] what to do with Dollar side effect
+// [ ] how to round Money
 
 fn main() {
     println!("Hello, world!");
@@ -18,7 +18,7 @@ impl Dollar {
         Dollar { amount }
     }
     fn times(&mut self, multiplier: i64) {
-        self.amount = self.amount * 2;
+        self.amount *= multiplier;
     }
 }
 
