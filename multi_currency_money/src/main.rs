@@ -17,8 +17,10 @@ impl Dollar {
     fn new(amount: i64) -> Self {
         Dollar { amount }
     }
-    fn times(&mut self, multiplier: i64) {
-        self.amount *= multiplier;
+    fn times(&self, multiplier: i64) -> Self {
+        Dollar {
+            amount: self.amount * multiplier,
+        }
     }
 }
 
@@ -28,8 +30,8 @@ mod MoneyTest {
 
     #[test]
     fn test_mutlipulication() {
-        let mut five = Dollar::new(5);
-        product = five.times(2);
+        let five = Dollar::new(5);
+        let mut product = five.times(2);
         assert_eq!(10, product.amount);
         product = five.times(3);
         assert_eq!(15, product.amount);
