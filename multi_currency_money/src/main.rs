@@ -29,9 +29,9 @@ mod MoneyTest {
     #[test]
     fn test_mutlipulication() {
         let mut five = Dollar::new(5);
-        five.times(2);
-        assert_eq!(10, five.amount);
-        five.times(3);
-        assert_eq!(15, five.amount);
+        product = five.times(2);
+        assert_eq!(10, product.amount);
+        product = five.times(3);
+        assert_eq!(15, product.amount);
     }
 }
