@@ -18,7 +18,7 @@ impl Dollar {
         Dollar { amount }
     }
     fn times(&mut self, multiplier: i64) {
-        self.amount = 5 * 2;
+        self.amount = self.amount * 2;
     }
 }
 
