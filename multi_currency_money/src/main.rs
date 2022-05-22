@@ -11,6 +11,12 @@ fn main() {
 
 struct Dollar {}
 
+impl Dollar {
+    fn new(amount: i64) -> Self {
+        Dollar {}
+    }
+}
+
 #[cfg(test)]
 mod MoneyTest {
     use crate::Dollar;
