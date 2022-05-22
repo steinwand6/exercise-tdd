@@ -9,6 +9,8 @@
 // [ ] equality comparison with NULL
 // [ ] equality comparison with Other Object
 
+mod dollar;
+
 fn main() {
     println!("Hello, world!");
 }
