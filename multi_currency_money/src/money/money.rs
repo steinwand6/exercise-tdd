@@ -8,6 +8,10 @@ pub struct Money {
 }
 
 impl Money {
+    pub fn dollar(amount: i64) -> Money {
+        Money { amount }
+    }
+
     pub fn times(&self, multiplier: i64) -> Money {
         Money {
             amount: self.amount * multiplier,

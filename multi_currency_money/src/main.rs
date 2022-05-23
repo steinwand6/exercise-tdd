@@ -24,11 +24,12 @@ fn main() {
 mod money_test {
     use crate::money::dollar::Dollar;
     use crate::money::franc::Franc;
+    use crate::money::money::Money;
     use crate::money::money::MoneyTrait;
 
     #[test]
     fn test_mutlipulication() {
-        let five = Dollar::new(5);
+        let five = Money::dollar(5);
         assert_eq!(five.times(2), Dollar::new(10));
         assert_eq!(five.times(3), Dollar::new(15));
     }
