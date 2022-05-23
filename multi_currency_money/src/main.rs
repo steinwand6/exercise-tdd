@@ -9,10 +9,11 @@
 // [ ] equality comparison with NULL
 // [ ] equality comparison with Other Object
 // [x] 5CHF * 2 = 10CHF
-// [ ] overlapping dollar and franc
+// [x] overlapping dollar and franc
 // [x] generalization of equal()
-// [ ] generalization of times()
-// [ ] Compare Dollar and Franc
+// [x] generalization of times()
+// [x] Compare Dollar and Franc
+// [x] idea of currency
 
 mod money;
 
@@ -35,15 +36,6 @@ mod money_test {
     fn test_equality() {
         assert!(Money::dollar(5).equal(Money::dollar(5)));
         assert!(!Money::dollar(5).equal(Money::dollar(6)));
-        assert!(Money::franc(5).equal(Money::franc(5)));
-        assert!(!Money::franc(5).equal(Money::franc(6)));
         assert!(!Money::franc(5).equal(Money::dollar(5)));
-    }
-
-    #[test]
-    fn test_franc_mutlipulication() {
-        let five = Money::franc(5);
-        assert_eq!(five.times(2), Money::franc(10));
-        assert_eq!(five.times(3), Money::franc(15));
     }
 }
