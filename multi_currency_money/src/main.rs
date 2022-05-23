@@ -38,4 +38,10 @@ mod money_test {
         assert!(!Money::dollar(5).equal(Money::dollar(6)));
         assert!(!Money::franc(5).equal(Money::dollar(5)));
     }
+
+    #[test]
+    fn test_simple_addition() {
+        let sum = Money::dollar(5).plus(Money::dollar(5));
+        assert_eq!(sum, Money::dollar(10));
+    }
 }
