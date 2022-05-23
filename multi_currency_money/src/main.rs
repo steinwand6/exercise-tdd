@@ -23,6 +23,7 @@ fn main() {
 mod money_test {
     use crate::money::dollar::Dollar;
     use crate::money::franc::Franc;
+    use crate::money::money::MoneyTrait;
 
     #[test]
     fn test_mutlipulication() {

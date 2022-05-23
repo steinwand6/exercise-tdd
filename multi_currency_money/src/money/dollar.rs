@@ -1,20 +1,25 @@
-#[derive(Debug, Eq, PartialEq)]
+use crate::money::money::Money;
+
+use super::money::MoneyTrait;
+
 pub struct Dollar {
     amount: i64,
 }
 
-impl Dollar {
-    pub fn new(amount: i64) -> Self {
-        Dollar { amount }
+impl Dollar {}
+
+impl MoneyTrait for Dollar {
+    fn new(amount: i64) -> Money {
+        Money { amount }
     }
 
-    pub fn times(&self, multiplier: i64) -> Self {
-        Dollar {
+    fn times(&self, multiplier: i64) -> Money {
+        Money {
             amount: self.amount * multiplier,
         }
     }
 
-    pub fn equal(&self, obj: Dollar) -> bool {
+    fn equal(&self, obj: Money) -> bool {
         self.amount == obj.amount
     }
 }
