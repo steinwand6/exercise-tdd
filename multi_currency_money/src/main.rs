@@ -23,7 +23,6 @@ fn main() {
 #[cfg(test)]
 mod money_test {
     use crate::money::money::Money;
-    use crate::money::money::MoneyTrait;
 
     #[test]
     fn test_mutlipulication() {
