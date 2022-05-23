@@ -22,7 +22,6 @@ fn main() {
 
 #[cfg(test)]
 mod money_test {
-    use crate::money::dollar::Dollar;
     use crate::money::franc::Franc;
     use crate::money::money::Money;
     use crate::money::money::MoneyTrait;
@@ -30,17 +29,17 @@ mod money_test {
     #[test]
     fn test_mutlipulication() {
         let five = Money::dollar(5);
-        assert_eq!(five.times(2), Dollar::new(10));
-        assert_eq!(five.times(3), Dollar::new(15));
+        assert_eq!(five.times(2), Money::dollar(10));
+        assert_eq!(five.times(3), Money::dollar(15));
     }
 
     #[test]
     fn test_equality() {
-        assert!(Dollar::new(5).equal(Dollar::new(5)));
-        assert!(!Dollar::new(5).equal(Dollar::new(6)));
+        assert!(Money::dollar(5).equal(Money::dollar(5)));
+        assert!(!Money::dollar(5).equal(Money::dollar(6)));
         assert!(Franc::new(5).equal(Franc::new(5)));
         assert!(!Franc::new(5).equal(Franc::new(6)));
-        assert!(!Franc::new(5).equal(Dollar::new(5)));
+        assert!(!Franc::new(5).equal(Money::dollar(5)));
     }
 
     #[test]
