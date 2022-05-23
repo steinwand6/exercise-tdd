@@ -37,4 +37,11 @@ impl Money {
         }
         self.amount == obj.amount
     }
+
+    pub fn plus(&self, addend: Money) -> Money {
+        Money {
+            amount: self.amount + addend.amount,
+            currency: self.currency.clone(),
+        }
+    }
 }
