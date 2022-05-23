@@ -1,3 +1,9 @@
+#[derive(Debug, Eq, PartialEq, Clone)]
+enum Currency {
+    USD,
+    CHF,
+}
+
 pub trait MoneyTrait {
     fn new(amount: i64) -> Money;
     fn currency() -> String;
@@ -6,21 +12,21 @@ pub trait MoneyTrait {
 #[derive(Debug, Eq, PartialEq)]
 pub struct Money {
     pub amount: i64,
-    currency: String,
+    currency: Currency,
 }
 
 impl Money {
     pub fn dollar(amount: i64) -> Money {
         Money {
             amount,
-            currency: "USD".to_string(),
+            currency: Currency::USD,
         }
     }
 
     pub fn franc(amount: i64) -> Money {
         Money {
             amount,
-            currency: "CHF".to_string(),
+            currency: Currency::CHF,
         }
     }
 
