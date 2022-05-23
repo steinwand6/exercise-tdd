@@ -32,6 +32,9 @@ impl Money {
     }
 
     pub fn equal(&self, obj: Money) -> bool {
+        if self.currency != obj.currency {
+            return false;
+        }
         self.amount == obj.amount
     }
 }
