@@ -44,4 +44,10 @@ mod money_test {
         assert_eq!(five.times(2), Franc::new(10));
         assert_eq!(five.times(3), Franc::new(15));
     }
+
+    #[test]
+    fn test_franc_equality() {
+        assert!(Franc::new(5).equal(Franc::new(5)));
+        assert!(!Franc::new(5).equal(Franc::new(6)));
+    }
 }
