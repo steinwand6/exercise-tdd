@@ -46,7 +46,7 @@ mod money_test {
         let bank = Bank::new();
         let five = Money::dollar(5);
         let sum = five.plus(Money::dollar(5));
-        let reduced = Bank::reduce(sum, "USD");
         assert_eq!(sum, Money::dollar(10));
+        let reduced = bank.reduce(sum, "USD");
     }
 }

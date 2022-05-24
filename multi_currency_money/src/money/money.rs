@@ -10,6 +10,10 @@ pub struct Money {
     currency: Currency,
 }
 
+pub trait Expression {}
+
+impl Expression for Money {}
+
 impl Money {
     pub fn dollar(amount: i64) -> Money {
         Money {
