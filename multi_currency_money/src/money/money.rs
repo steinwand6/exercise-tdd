@@ -6,7 +6,7 @@ enum Currency {
 
 #[derive(Debug, Eq, PartialEq)]
 pub struct Money {
-    pub amount: i64,
+    amount: i64,
     currency: Currency,
 }
 
