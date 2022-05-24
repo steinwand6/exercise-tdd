@@ -4,11 +4,6 @@ enum Currency {
     CHF,
 }
 
-pub trait MoneyTrait {
-    fn new(amount: i64) -> Money;
-    fn currency() -> String;
-}
-
 #[derive(Debug, Eq, PartialEq)]
 pub struct Money {
     pub amount: i64,
