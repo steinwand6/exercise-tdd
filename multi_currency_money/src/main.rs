@@ -15,6 +15,7 @@
 // [x] Compare Dollar and Franc
 // [x] idea of currency
 
+mod bank;
 mod money;
 
 fn main() {
@@ -23,6 +24,7 @@ fn main() {
 
 #[cfg(test)]
 mod money_test {
+    use crate::bank::bank::Bank;
     use crate::money::money::Money;
 
     #[test]
@@ -41,7 +43,10 @@ mod money_test {
 
     #[test]
     fn test_simple_addition() {
-        let sum = Money::dollar(5).plus(Money::dollar(5));
+        let bank = Bank::new();
+        let five = Money::dollar(5);
+        let sum = five.plus(Money::dollar(5));
+        let reduced = Bank::reduce(sum, "USD");
         assert_eq!(sum, Money::dollar(10));
     }
 }
