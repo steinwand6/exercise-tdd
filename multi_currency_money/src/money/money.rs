@@ -61,3 +61,19 @@ impl Money {
         Sum::new(self, addend)
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::Currency;
+    use super::Money;
+    use super::Sum;
+    use crate::bank::bank::Bank;
+
+    #[test]
+    fn test_reduce_sum() {
+        let sum = Sum::new(Money::dollar(3), Money::dollar(4));
+        let bank = Bank::new();
+        let result = bank.reduce(sum, Currency::USD);
+        assert_eq!(result, Money::dollar(7));
+    }
+}
