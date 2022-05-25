@@ -10,9 +10,18 @@ pub struct Money {
     currency: Currency,
 }
 
-pub trait Expression {}
+pub trait Expression {
+    fn reduce(&self, to: Currency) -> Money;
+}
 
-impl Expression for Money {}
+impl Expression for Money {
+    fn reduce(&self, _: Currency) -> Money {
+        Money {
+            amount: self.amount,
+            currency: self.currency.clone(),
+        }
+    }
+}
 
 #[derive(Debug, Eq, PartialEq)]
 pub struct Sum {
@@ -20,7 +29,15 @@ pub struct Sum {
     pub augend: Money,
 }
 
-impl Expression for Sum {}
+impl Expression for Sum {
+    fn reduce(&self, to: Currency) -> Money {
+        let amount = self.augend.amount + self.addend.amount;
+        Money {
+            amount,
+            currency: to,
+        }
+    }
+}
 
 impl Sum {
     pub fn new(augend: Money, addend: Money) -> Self {
@@ -57,8 +74,17 @@ impl Money {
         self.amount == obj.amount
     }
 
-    pub fn plus(self, addend: Money) -> Sum {
-        Sum::new(self, addend)
+    pub fn plus(&self, addend: &Money) -> Sum {
+        Sum::new(
+            Money {
+                amount: self.amount,
+                currency: self.currency.clone(),
+            },
+            Money {
+                amount: addend.amount,
+                currency: addend.currency.clone(),
+            },
+        )
     }
 }
 

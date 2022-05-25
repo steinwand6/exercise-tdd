@@ -19,13 +19,13 @@ mod bank;
 mod money;
 
 fn main() {
-    println!("Hello, world!");
+    println!("practice tdd!");
 }
 
 #[cfg(test)]
 mod money_test {
     use crate::bank::bank::Bank;
-    use crate::money::money::{Money, Sum};
+    use crate::money::money::{Currency, Money};
 
     #[test]
     fn test_mutlipulication() {
@@ -45,16 +45,15 @@ mod money_test {
     fn test_simple_addition() {
         let bank = Bank::new();
         let five = Money::dollar(5);
-        let sum = five.plus(Money::dollar(5));
-        let reduced = bank.reduce(sum, "USD");
+        let sum = five.plus(&Money::dollar(5));
+        let reduced = bank.reduce(sum, Currency::USD);
         assert_eq!(reduced, Money::dollar(10));
     }
 
     #[test]
     fn test_plus_returns_sum() {
         let five = Money::dollar(5);
-        let five2 = Money::dollar(5);
-        let sum: Sum = five.plus(five2);
+        let sum = five.plus(&five);
         assert_eq!(Money::dollar(5), sum.augend);
         assert_eq!(Money::dollar(5), sum.addend);
     }

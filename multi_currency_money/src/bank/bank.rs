@@ -7,7 +7,8 @@ impl Bank {
     pub fn new() -> Self {
         Bank {}
     }
+
     pub fn reduce<T: Expression>(&self, source: T, to: Currency) -> Money {
-        Money::dollar(10)
+        source.reduce(to)
     }
 }
