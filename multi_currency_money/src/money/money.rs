@@ -1,5 +1,5 @@
 #[derive(Debug, Eq, PartialEq, Clone)]
-enum Currency {
+pub enum Currency {
     USD,
     CHF,
 }
