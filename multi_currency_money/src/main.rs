@@ -15,7 +15,6 @@
 // [x] Compare Dollar and Franc
 // [x] idea of currency
 
-mod bank;
 mod money;
 
 fn main() {

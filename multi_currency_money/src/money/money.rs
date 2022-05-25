@@ -90,7 +90,7 @@ impl Money {
 
 #[cfg(test)]
 mod money_test {
-    use crate::bank::bank::Bank;
+    use crate::money::bank::Bank;
     use crate::money::money::{Currency, Money, Sum};
 
     #[test]
