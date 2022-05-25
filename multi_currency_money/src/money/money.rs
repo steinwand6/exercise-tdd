@@ -22,6 +22,12 @@ pub struct Sum {
 
 impl Expression for Sum {}
 
+impl Sum {
+    pub fn new(augend: Money, addend: Money) -> Self {
+        Sum { augend, addend }
+    }
+}
+
 impl Money {
     pub fn dollar(amount: i64) -> Money {
         Money {
@@ -52,9 +58,6 @@ impl Money {
     }
 
     pub fn plus(self, addend: Money) -> Sum {
-        Sum {
-            augend: self,
-            addend,
-        }
+        Sum::new(self, addend)
     }
 }
