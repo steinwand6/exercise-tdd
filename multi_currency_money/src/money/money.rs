@@ -14,6 +14,14 @@ pub trait Expression {}
 
 impl Expression for Money {}
 
+#[derive(Debug, Eq, PartialEq)]
+pub struct Sum {
+    pub addend: Money,
+    pub augend: Money,
+}
+
+impl Expression for Sum {}
+
 impl Money {
     pub fn dollar(amount: i64) -> Money {
         Money {
@@ -43,10 +51,10 @@ impl Money {
         self.amount == obj.amount
     }
 
-    pub fn plus(&self, addend: Money) -> Money {
-        Money {
-            amount: self.amount + addend.amount,
-            currency: self.currency.clone(),
+    pub fn plus(self, addend: Money) -> Sum {
+        Sum {
+            augend: self,
+            addend,
         }
     }
 }

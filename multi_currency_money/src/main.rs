@@ -25,7 +25,7 @@ fn main() {
 #[cfg(test)]
 mod money_test {
     use crate::bank::bank::Bank;
-    use crate::money::money::Money;
+    use crate::money::money::{Money, Sum};
 
     #[test]
     fn test_mutlipulication() {
@@ -46,17 +46,16 @@ mod money_test {
         let bank = Bank::new();
         let five = Money::dollar(5);
         let sum = five.plus(Money::dollar(5));
-        assert_eq!(sum, Money::dollar(10));
         let reduced = bank.reduce(sum, "USD");
+        assert_eq!(reduced, Money::dollar(10));
     }
 
     #[test]
     fn test_plus_returns_sum() {
         let five = Money::dollar(5);
         let five2 = Money::dollar(5);
-        let result = five.plus(five2);
-        let sum = result.to_sum();
-        assert_eq!(five, sum.augend);
-        assert_eq!(five, sum.addend);
+        let sum: Sum = five.plus(five2);
+        assert_eq!(Money::dollar(5), sum.augend);
+        assert_eq!(Money::dollar(5), sum.addend);
     }
 }
