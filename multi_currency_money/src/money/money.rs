@@ -1,3 +1,5 @@
+use super::expression::Expression;
+
 #[derive(Debug, Eq, PartialEq, Clone)]
 pub enum Currency {
     USD,
@@ -10,8 +12,10 @@ pub struct Money {
     currency: Currency,
 }
 
-pub trait Expression {
-    fn reduce(&self, to: Currency) -> Money;
+#[derive(Debug, Eq, PartialEq)]
+pub struct Sum {
+    pub addend: Money,
+    pub augend: Money,
 }
 
 impl Expression for Money {
@@ -21,12 +25,6 @@ impl Expression for Money {
             currency: self.currency.clone(),
         }
     }
-}
-
-#[derive(Debug, Eq, PartialEq)]
-pub struct Sum {
-    pub addend: Money,
-    pub augend: Money,
 }
 
 impl Expression for Sum {
