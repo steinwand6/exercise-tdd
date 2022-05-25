@@ -1,4 +1,5 @@
 use super::expression::Expression;
+use super::sum::Sum;
 
 #[derive(Debug, Eq, PartialEq, Clone)]
 pub enum Currency {
@@ -8,14 +9,8 @@ pub enum Currency {
 
 #[derive(Debug, Eq, PartialEq)]
 pub struct Money {
-    amount: i64,
-    currency: Currency,
-}
-
-#[derive(Debug, Eq, PartialEq)]
-pub struct Sum {
-    pub addend: Money,
-    pub augend: Money,
+    pub(crate) amount: i64,
+    pub(crate) currency: Currency,
 }
 
 impl Expression for Money {
@@ -24,22 +19,6 @@ impl Expression for Money {
             amount: self.amount,
             currency: self.currency.clone(),
         }
-    }
-}
-
-impl Expression for Sum {
-    fn reduce(&self, to: Currency) -> Money {
-        let amount = self.augend.amount + self.addend.amount;
-        Money {
-            amount,
-            currency: to,
-        }
-    }
-}
-
-impl Sum {
-    pub fn new(augend: Money, addend: Money) -> Self {
-        Sum { augend, addend }
     }
 }
 
