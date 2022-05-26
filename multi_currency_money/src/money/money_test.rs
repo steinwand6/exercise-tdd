@@ -45,8 +45,8 @@ pub mod money_tests {
 
     #[test]
     fn test_reduce_money_different_currency() {
-        let bank = Bank::new();
-        bank.add_rate(Currency::CHF, Currency::USD, 2);
+        let mut bank = Bank::new();
+        bank.add_rate(&Currency::CHF, &Currency::USD, 2);
         let result = bank.reduce(Money::franc(2), &Currency::USD);
         assert_eq!(result, Money::dollar(1));
     }

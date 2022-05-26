@@ -2,7 +2,7 @@ use super::bank::Bank;
 use super::expression::Expression;
 use super::sum::Sum;
 
-#[derive(Debug, Eq, PartialEq, Clone)]
+#[derive(Debug, Eq, PartialEq, Clone, Hash)]
 pub enum Currency {
     USD,
     CHF,
