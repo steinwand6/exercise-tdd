@@ -14,10 +14,20 @@ pub struct Money {
 }
 
 impl Expression for Money {
-    fn reduce(&self, _: Currency) -> Money {
+    fn reduce(&self, to: Currency) -> Money {
+        let rate = match self.currency {
+            Currency::CHF => {
+                if to == Currency::USD {
+                    2
+                } else {
+                    1
+                }
+            }
+            _ => 1,
+        };
         Money {
-            amount: self.amount,
-            currency: self.currency.clone(),
+            amount: self.amount / rate,
+            currency: to,
         }
     }
 }

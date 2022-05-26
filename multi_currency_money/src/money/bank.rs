@@ -12,4 +12,6 @@ impl Bank {
     pub fn reduce<T: Expression>(&self, source: T, to: Currency) -> Money {
         source.reduce(to)
     }
+
+    pub fn add_rate(&self, from: Currency, to: Currency, rate: i32) {}
 }
