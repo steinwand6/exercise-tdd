@@ -1,3 +1,4 @@
+use super::bank::Bank;
 use super::expression::Expression;
 use super::sum::Sum;
 
@@ -14,20 +15,11 @@ pub struct Money {
 }
 
 impl Expression for Money {
-    fn reduce(&self, to: Currency) -> Money {
-        let rate = match self.currency {
-            Currency::CHF => {
-                if to == Currency::USD {
-                    2
-                } else {
-                    1
-                }
-            }
-            _ => 1,
-        };
+    fn reduce(&self, bank: &Bank, to: &Currency) -> Money {
+        let rate = bank.rate(&self.currency, to);
         Money {
             amount: self.amount / rate,
-            currency: to,
+            currency: to.clone(),
         }
     }
 }

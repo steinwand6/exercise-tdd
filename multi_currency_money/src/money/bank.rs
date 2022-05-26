@@ -9,9 +9,22 @@ impl Bank {
         Bank {}
     }
 
-    pub fn reduce<T: Expression>(&self, source: T, to: Currency) -> Money {
-        source.reduce(to)
+    pub fn reduce<T: Expression>(&self, source: T, to: &Currency) -> Money {
+        source.reduce(self, to)
     }
 
-    pub fn add_rate(&self, from: Currency, to: Currency, rate: i32) {}
+    pub fn add_rate(&self, from: Currency, to: Currency, rate: i64) {}
+
+    pub fn rate(&self, from: &Currency, to: &Currency) -> i64 {
+        match from {
+            Currency::CHF => {
+                if to == &Currency::USD {
+                    2
+                } else {
+                    1
+                }
+            }
+            _ => 1,
+        }
+    }
 }

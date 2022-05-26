@@ -23,7 +23,7 @@ pub mod money_tests {
         let bank = Bank::new();
         let five = Money::dollar(5);
         let sum = five.plus(&Money::dollar(5));
-        let reduced = bank.reduce(sum, Currency::USD);
+        let reduced = bank.reduce(sum, &Currency::USD);
         assert_eq!(reduced, Money::dollar(10));
     }
 
@@ -39,7 +39,7 @@ pub mod money_tests {
     fn test_reduce_sum() {
         let sum = Sum::new(Money::dollar(3), Money::dollar(4));
         let bank = Bank::new();
-        let result = bank.reduce(sum, Currency::USD);
+        let result = bank.reduce(sum, &Currency::USD);
         assert_eq!(result, Money::dollar(7));
     }
 
@@ -47,7 +47,7 @@ pub mod money_tests {
     fn test_reduce_money_different_currency() {
         let bank = Bank::new();
         bank.add_rate(Currency::CHF, Currency::USD, 2);
-        let result = bank.reduce(Money::franc(2), Currency::USD);
+        let result = bank.reduce(Money::franc(2), &Currency::USD);
         assert_eq!(result, Money::dollar(1));
     }
 }

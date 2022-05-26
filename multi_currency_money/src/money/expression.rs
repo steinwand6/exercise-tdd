@@ -1,5 +1,6 @@
+use super::bank::Bank;
 use super::money::{Currency, Money};
 
 pub trait Expression {
-    fn reduce(&self, to: Currency) -> Money;
+    fn reduce(&self, bank: &Bank, to: &Currency) -> Money;
 }

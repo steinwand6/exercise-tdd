@@ -1,3 +1,4 @@
+use super::bank::Bank;
 use super::expression::Expression;
 use super::money::{Currency, Money};
 
@@ -8,11 +9,11 @@ pub struct Sum {
 }
 
 impl Expression for Sum {
-    fn reduce(&self, to: Currency) -> Money {
+    fn reduce(&self, _: &Bank, to: &Currency) -> Money {
         let amount = self.augend.amount + self.addend.amount;
         Money {
             amount,
-            currency: to,
+            currency: to.clone(),
         }
     }
 }
