@@ -50,4 +50,14 @@ pub mod money_tests {
         let result = bank.reduce(Money::franc(2), &Currency::USD);
         assert_eq!(result, Money::dollar(1));
     }
+
+    #[test]
+    fn test_mixed_addtion() {
+        let five_bucks = Money::dollar(5);
+        let ten_francs = Money::franc(10);
+        let mut bank = Bank::new();
+        bank.add_rate(&Currency::CHF, &Currency::USD, 2);
+        let result = bank.reduce(five_bucks.plus(&ten_francs), &Currency::USD);
+        assert_eq!(result, Money::dollar(10));
+    }
 }
