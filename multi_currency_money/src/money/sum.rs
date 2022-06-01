@@ -9,8 +9,8 @@ pub struct Sum {
 }
 
 impl Expression for Sum {
-    fn reduce(&self, _: &Bank, to: &Currency) -> Money {
-        let amount = self.augend.amount + self.addend.amount;
+    fn reduce(&self, bank: &Bank, to: &Currency) -> Money {
+        let amount = self.augend.reduce(bank, to).amount + self.addend.reduce(bank, to).amount;
         Money {
             amount,
             currency: to.clone(),
